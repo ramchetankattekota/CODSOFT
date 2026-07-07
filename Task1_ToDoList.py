@@ -6,7 +6,6 @@ def show_tasks(tasks):
         for i, task in enumerate(tasks, start=1):
             print(f"{i}. {task}")
 
-
 tasks = []
 
 while True:
@@ -31,26 +30,34 @@ while True:
         show_tasks(tasks)
 
         if len(tasks) > 0:
-            task_num = int(input("Enter task number to update: "))
+            try:
+                task_num = int(input("Enter task number to update: "))
 
-            if 1 <= task_num <= len(tasks):
-                new_task = input("Enter updated task: ")
-                tasks[task_num - 1] = new_task
-                print("Task updated successfully!")
-            else:
-                print("Invalid task number!")
+                if 1 <= task_num <= len(tasks):
+                    new_task = input("Enter updated task: ")
+                    tasks[task_num - 1] = new_task
+                    print("Task updated successfully!")
+                else:
+                    print("Invalid task number!")
+
+            except ValueError:
+                print("Please enter a valid number!")
 
     elif choice == "4":
         show_tasks(tasks)
 
         if len(tasks) > 0:
-            task_num = int(input("Enter task number to delete: "))
+            try:
+                task_num = int(input("Enter task number to delete: "))
 
-            if 1 <= task_num <= len(tasks):
-                removed_task = tasks.pop(task_num - 1)
-                print(f"Task '{removed_task}' deleted successfully!")
-            else:
-                print("Invalid task number!")
+                if 1 <= task_num <= len(tasks):
+                    removed_task = tasks.pop(task_num - 1)
+                    print(f"Task '{removed_task}' deleted successfully!")
+                else:
+                    print("Invalid task number!")
+
+            except ValueError:
+                print("Please enter a valid number!")
 
     elif choice == "5":
         print("Thank you for using To-Do List!")
